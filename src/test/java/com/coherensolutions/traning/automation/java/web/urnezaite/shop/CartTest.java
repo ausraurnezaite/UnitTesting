@@ -1,15 +1,16 @@
 package com.coherensolutions.traning.automation.java.web.urnezaite.shop;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CartTest {
-    public Cart cart;
-    public RealItem item;
+    public static Cart cart;
+    public static RealItem item;
 
-    @BeforeEach
-    public void createCart() {
+    @BeforeAll
+    static void createCart() {
         cart = new Cart("test");
 
         item = new RealItem();

@@ -11,11 +11,12 @@ import java.io.File;
 
 public class JsonParserTest {
     private final JsonParser parser = new JsonParser();
-    private Cart cart;
+    private static Cart cart;
 
-    @BeforeEach
-    void createCart() {
+    @BeforeAll
+    static void createCart() {
         cart = new Cart("test");
+
         RealItem item = new RealItem();
         item.setName("Cat Food");
         item.setPrice(20);
