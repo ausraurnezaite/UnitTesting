@@ -1,6 +1,5 @@
 package parser;
 
-import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -57,9 +56,9 @@ public class JsonParserTest {
         Assertions.assertThrows(NoSuchFileException.class, () -> parser.readFromFile(new File(path)), "Wrong path");
     }
 
-    @Ignore
+    @Disabled
     @Test
-    void testIfFileIsCreated() {
+    void testFileIsCreated() {
         parser.writeToFile(cart);
         File file = new File("src/main/resources/" + cart.getCartName() + ".json");
         Assertions.assertTrue(file.exists());
