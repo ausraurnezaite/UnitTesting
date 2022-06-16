@@ -1,23 +1,17 @@
-package parser;
+package com.coherensolutions.traning.automation.java.web.urnezaite.parser;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import shop.Cart;
-import shop.RealItem;
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.Cart;
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.RealItem;
 
 import java.io.File;
 
 
-
 public class JsonParserTest {
-    private static JsonParser parser;
-    private static Cart cart;
-
-    @BeforeAll
-    static void beforeAll() {
-        parser = new JsonParser();
-    }
+    private final JsonParser parser = new JsonParser();
+    private Cart cart;
 
     @BeforeEach
     void createCart() {
@@ -29,15 +23,15 @@ public class JsonParserTest {
         cart.addRealItem(item);
     }
 
-    @AfterAll
-    static void deleteFile() {
-        new File("src/main/resources/" + cart.getCartName() + ".json").delete();
+    @AfterEach
+    void deleteFile() {
+        new File(String.format("src/main/resources/%s.json", cart.getCartName())).delete();
     }
 
     @Test
     void checkIfWrittenAndReadDataIsCorrect() {
         parser.writeToFile(cart);
-        Cart cartFromFile = parser.readFromFile(new File("src/main/resources/" + cart.getCartName() + ".json"));
+        Cart cartFromFile = parser.readFromFile(new File(String.format("src/main/resources/%s.json", cart.getCartName())));
         Assertions.assertEquals(cart.getCartName(), cartFromFile.getCartName());
         Assertions.assertAll("carts should match",
                 () -> Assertions.assertEquals(cart.getCartName(), cartFromFile.getCartName(), "Names do not match"),

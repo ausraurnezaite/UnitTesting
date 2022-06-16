@@ -1,8 +1,10 @@
-import parser.JsonParser;
-import parser.Parser;
-import shop.Cart;
-import shop.RealItem;
-import shop.VirtualItem;
+package com.coherensolutions.traning.automation.java.web.urnezaite;
+
+import com.coherensolutions.traning.automation.java.web.urnezaite.parser.JsonParser;
+import com.coherensolutions.traning.automation.java.web.urnezaite.parser.Parser;
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.Cart;
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.RealItem;
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.VirtualItem;
 
 import java.io.File;
 

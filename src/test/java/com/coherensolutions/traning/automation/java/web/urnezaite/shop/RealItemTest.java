@@ -1,4 +1,4 @@
-package shop;
+package com.coherensolutions.traning.automation.java.web.urnezaite.shop;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;

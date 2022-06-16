@@ -1,4 +1,4 @@
-package shop;
+package com.coherensolutions.traning.automation.java.web.urnezaite.shop;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,9 +20,11 @@ public class CartTest {
 
     @Test
     void testTotalPrice() {
+        double tax = 0.2;
         cart.addRealItem(item);
         cart.addRealItem(item);
-        Assertions.assertEquals((item.getPrice() * 1.2) * 2, cart.getTotalPrice());
+        double totalExpectedPrice = item.getPrice() + item.getPrice() * tax + item.getPrice() + item.getPrice() * tax;
+        Assertions.assertEquals(totalExpectedPrice, cart.getTotalPrice());
     }
 
     @Test
