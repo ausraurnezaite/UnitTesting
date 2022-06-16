@@ -1,4 +1,4 @@
-package shop;
+package com.coherensolutions.traning.automation.java.web.urnezaite.shop;
 
 import java.util.ArrayList;
 import java.util.List;

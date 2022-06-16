@@ -1,4 +1,4 @@
-package parser;
+package com.coherensolutions.traning.automation.java.web.urnezaite.parser;
 
 public class NoSuchFileException extends RuntimeException {
 

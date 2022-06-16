@@ -1,4 +1,4 @@
-package shop;
+package com.coherensolutions.traning.automation.java.web.urnezaite.shop;
 
 public class VirtualItem extends Item {
 

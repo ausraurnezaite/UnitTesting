@@ -1,7 +1,7 @@
-package parser;
+package com.coherensolutions.traning.automation.java.web.urnezaite.parser;
 
 import com.google.gson.Gson;
-import shop.Cart;
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.Cart;
 
 import java.io.*;
 
