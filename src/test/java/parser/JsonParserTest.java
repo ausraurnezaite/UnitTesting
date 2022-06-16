@@ -9,6 +9,7 @@ import shop.RealItem;
 import java.io.File;
 
 
+
 public class JsonParserTest {
     private static JsonParser parser;
     private static Cart cart;
@@ -22,7 +23,7 @@ public class JsonParserTest {
     void createCart() {
         cart = new Cart("test");
         RealItem item = new RealItem();
-        item.setName("catfood");
+        item.setName("Cat Food");
         item.setPrice(20);
         item.setWeight(2);
         cart.addRealItem(item);
@@ -55,6 +56,18 @@ public class JsonParserTest {
     void checkIfThrowsNoSuchFileException(String path) {
         Assertions.assertThrows(NoSuchFileException.class, () -> parser.readFromFile(new File(path)), "Wrong path");
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "src/main/resources/andrew-cart.json",
+            "src/main/resources/eugen-cart.json",
+            "src/main/resources/test.json",
+    })
+    void checkThatNoExceptionsAreThrown(String path) {
+        Assertions.assertDoesNotThrow(() -> parser.readFromFile(new File(path)), "Reading failed");
+        //file reading isn't stopped after reaching end of file.
+    }
+
 
     @Disabled
     @Test
