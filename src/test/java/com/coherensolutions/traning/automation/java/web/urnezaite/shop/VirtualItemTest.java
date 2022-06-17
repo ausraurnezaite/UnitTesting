@@ -1,5 +1,6 @@
 package com.coherensolutions.traning.automation.java.web.urnezaite.shop;
 
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.VirtualItem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
