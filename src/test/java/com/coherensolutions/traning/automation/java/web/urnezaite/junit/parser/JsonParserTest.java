@@ -1,4 +1,4 @@
-package com.coherensolutions.traning.automation.java.web.urnezaite.parser;
+package com.coherensolutions.traning.automation.java.web.urnezaite.junit.parser;
 
 import com.coherensolutions.traning.automation.java.web.urnezaite.parser.JsonParser;
 import com.coherensolutions.traning.automation.java.web.urnezaite.parser.NoSuchFileException;
@@ -35,7 +35,6 @@ public class JsonParserTest {
     void checkIfWrittenAndReadDataIsCorrect() {
         parser.writeToFile(cart);
         Cart cartFromFile = parser.readFromFile(new File(String.format("src/main/resources/%s.json", cart.getCartName())));
-        Assertions.assertEquals(cart.getCartName(), cartFromFile.getCartName());
         Assertions.assertAll("carts should match",
                 () -> Assertions.assertEquals(cart.getCartName(), cartFromFile.getCartName(), "Names do not match"),
                 () -> Assertions.assertEquals(cart.getTotalPrice(), cartFromFile.getTotalPrice(), "Prices do not match")

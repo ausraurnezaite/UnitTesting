@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="shop">
+
+    <groups>
+        <run>
+            <include name="shop"/>
+            <exclude name="item"/>
+        </run>
+    </groups>
+
+    <test name="Cart Test">
+        <parameter name="cartName" value="test"/>
+        <parameter name="realItemName" value="catFood"/>
+        <parameter name="realItemPrice" value="10"/>
+        <parameter name="realItemWeight" value="2"/>
+        <parameter name="tax" value="0.2"/>
+        <groups>
+            <run>
+                <include name="cart"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.CartTest">
+                <methods>
+                    <include name="cartIsCreatedTest()"/>
+                    <include name="testTotalPrice"/>
+                    <include name="testTotalPriceWhenAddingRemovingItem"/>
+                    <include name="testCartName"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Items Test">
+        <groups>
+            <run>
+                <include name="item"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.RealItemTest"/>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.VirtualItemTest"/>
+        </classes>
+    </test>
+</suite>

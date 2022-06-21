@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Item tests">
+    <test name="RealItem Test">
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.RealItemTest"/>
+        </classes>
+    </test>
+    <test name="VirtualItem Test">
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.VirtualItemTest"/>
+        </classes>
+    </test>
+</suite>

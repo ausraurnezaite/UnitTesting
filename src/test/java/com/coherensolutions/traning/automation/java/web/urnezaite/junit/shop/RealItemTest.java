@@ -1,4 +1,4 @@
-package com.coherensolutions.traning.automation.java.web.urnezaite.shop;
+package com.coherensolutions.traning.automation.java.web.urnezaite.junit.shop;
 
 import com.coherensolutions.traning.automation.java.web.urnezaite.shop.RealItem;
 import org.junit.jupiter.api.Assertions;

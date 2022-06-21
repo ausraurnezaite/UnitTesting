@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Cart Test">
+    <test name="Cart Test">
+        <parameter name="cartName" value="test"/>
+        <parameter name="realItemName" value="cat food"/>
+        <parameter name="realItemPrice" value="10"/>
+        <parameter name="realItemWeight" value="2"/>
+        <parameter name="tax" value="0.2"/>
+
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.CartTest">
+                <methods>
+                    <include name="cartIsCreatedTest()"/>
+                    <include name="testTotalPrice"/>
+                    <include name="testTotalPriceWhenAddingRemovingItem"/>
+                    <exclude name="testCartName"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
