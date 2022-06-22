@@ -2,6 +2,7 @@ package com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop;
 
 import com.coherensolutions.traning.automation.java.web.urnezaite.shop.Cart;
 import com.coherensolutions.traning.automation.java.web.urnezaite.shop.RealItem;
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.VirtualItem;
 import org.testng.annotations.*;
 
 import static org.testng.Assert.assertEquals;
@@ -9,19 +10,24 @@ import static org.testng.Assert.assertNotNull;
 
 public class CartTest {
     public Cart cart;
-    public RealItem item;
+    public RealItem realItem;
+    public VirtualItem virtualItem;
 
-    @Parameters({"cartName", "realItemName", "realItemPrice", "realItemWeight"})
+    @Parameters({"cartName", "realItemName", "realItemPrice", "realItemWeight", "virtualItemName", "virtualItemPrice", "virtualItemSizeOnDisk"})
     @BeforeMethod(groups = {"cart", "shop"})
-    void createCart(@Optional("test") String cartName, @Optional("cat food") String realItemName, @Optional("10") double realItemPrice, @Optional("2") double realItemWeight) {
+    void createCart(@Optional("test") String cartName, @Optional("cat food") String realItemName, @Optional("10") double realItemPrice, @Optional("2") double realItemWeight, @Optional("app") String virtualItemName, @Optional("5") double virtualItemPrice, @Optional("50") double virtualItemSizeOnDisk) {
         cart = new Cart(cartName);
-        System.out.println(cart);
 
-        item = new RealItem();
-        item.setName(realItemName);
-        item.setPrice(realItemPrice);
-        item.setWeight(realItemWeight);
-        System.out.println(item);
+        realItem = new RealItem();
+        realItem.setName(realItemName);
+        realItem.setPrice(realItemPrice);
+        realItem.setWeight(realItemWeight);
+
+        virtualItem = new VirtualItem();
+        virtualItem.setName(virtualItemName);
+        virtualItem.setPrice(virtualItemPrice);
+        virtualItem.setSizeOnDisk(virtualItemSizeOnDisk);
+
     }
 
     @Test(groups = {"cart", "shop"})
@@ -32,16 +38,18 @@ public class CartTest {
     @Parameters("tax")
     @Test(groups = {"cart", "shop"}, dependsOnMethods = "cartIsCreatedTest")
     void testTotalPrice(@Optional("0.2") double tax) {
-        cart.addRealItem(item);
-        cart.addRealItem(item);
-        double totalExpectedPrice = item.getPrice() + item.getPrice() * tax + item.getPrice() + item.getPrice() * tax;
+        cart.addRealItem(realItem);
+        cart.addVirtualItem(virtualItem);
+        double totalExpectedPrice = realItem.getPrice() + realItem.getPrice() * tax + virtualItem.getPrice() + virtualItem.getPrice() * tax;
         assertEquals(cart.getTotalPrice(), totalExpectedPrice);
     }
 
     @Test(groups = {"cart", "shop"}, dependsOnMethods = "cartIsCreatedTest")
     void testTotalPriceWhenAddingRemovingItem() {
-        cart.addRealItem(item);
-        cart.deleteRealItem(item);
+        cart.addRealItem(realItem);
+        cart.addVirtualItem(virtualItem);
+        cart.deleteRealItem(realItem);
+        cart.deleteVirtualItem(virtualItem);
         assertEquals(cart.getTotalPrice(), 0, "totalPrice must be 0");
         //total price is not changed after item is deleted!!
     }

@@ -6,6 +6,9 @@
         <parameter name="realItemName" value="cat food"/>
         <parameter name="realItemPrice" value="10"/>
         <parameter name="realItemWeight" value="2"/>
+        <parameter name="virtualItemName" value="app"/>
+        <parameter name="virtualItemPrice" value="5"/>
+        <parameter name="virtualItemSizeOnDisk" value="50"/>
         <parameter name="tax" value="0.2"/>
 
         <classes>

@@ -6,6 +6,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import static org.testng.Assert.assertEquals;
+
 public class RealItemTest {
 
     @Test(dataProvider = "itemDataProvider", groups = {"item", "shop"})
@@ -24,7 +26,7 @@ public class RealItemTest {
     }
 
     @DataProvider
-    public Object[][] itemDataProvider() {
+    Object[][] itemDataProvider() {
         Object[][] data = new Object[][]{
                 {"cat", 1000, 5.2},
                 {"phone", 600, 0.5},
@@ -32,4 +34,15 @@ public class RealItemTest {
         };
         return data;
     }
+
+    @Test(dataProvider = "itemDataProvider", groups = {"item", "shop"})
+    void toStringTest(String name, double price, double weight) {
+        RealItem realItem = new RealItem();
+        realItem.setName(name);
+        realItem.setPrice(price);
+        realItem.setWeight(weight);
+        String expected = "Class: " + realItem.getClass() + "; Name: " + realItem.getName() + "; Price: " + realItem.getPrice() + "; Weight: " + realItem.getWeight();
+        assertEquals(expected, realItem.toString());
+    }
+
 }

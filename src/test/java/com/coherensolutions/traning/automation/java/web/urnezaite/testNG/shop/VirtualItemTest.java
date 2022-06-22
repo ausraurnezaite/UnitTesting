@@ -22,7 +22,7 @@ public class VirtualItemTest {
     }
 
     @DataProvider
-    public Object[][] itemDataProvider() {
+    Object[][] itemDataProvider() {
         Object[][] data = new Object[][]{
                 {"movie", 5, 1000},
                 {"lecture", 12, 30},

@@ -16,7 +16,7 @@ public class JsonParserTest {
     private final JsonParser parser = new JsonParser();
     private Cart cart;
 
-    @BeforeTest
+    @BeforeTest(groups = {"parser", "shop"})
     void createCart() {
         cart = new Cart("test");
 
@@ -27,12 +27,12 @@ public class JsonParserTest {
         cart.addRealItem(item);
     }
 
-    @AfterMethod
+    @AfterMethod(groups = {"parser", "shop"})
     void deleteFile() {
         new File(String.format("src/main/resources/%s.json", cart.getCartName())).delete();
     }
 
-    @Test
+    @Test(groups = {"parser", "shop"})
     void checkIfWrittenAndReadDataIsCorrect() {
         SoftAssert softAssert = new SoftAssert();
         parser.writeToFile(cart);
@@ -42,7 +42,7 @@ public class JsonParserTest {
         softAssert.assertAll();
     }
 
-    @Test(dataProvider = "invalidPathProvider", expectedExceptions = NoSuchFileException.class)
+    @Test(dataProvider = "invalidPathProvider", expectedExceptions = NoSuchFileException.class, groups = {"parser", "shop"})
     void checkIfThrowsNoSuchFileException(String path) {
         parser.readFromFile(new File(path));
     }
@@ -59,10 +59,11 @@ public class JsonParserTest {
         return data;
     }
 
-    @Test(dataProvider = "pathProvider")
+    @Test(dataProvider = "pathProvider", groups = {"parser", "shop"})
     void checkThatEOFExceptionIsNotThrown(String path) {
         parser.readFromFile(new File(path));
         //file reading isn't stopped after reaching end of file.
+        //com.google.gson.JsonSyntaxException: java.io.EOFException
     }
 
     @DataProvider
@@ -74,7 +75,7 @@ public class JsonParserTest {
         return data;
     }
 
-    @Test
+    @Test(groups = {"parser", "shop"})
     void testFileIsCreated() {
         parser.writeToFile(cart);
         File file = new File("src/main/resources/" + cart.getCartName() + ".json");
