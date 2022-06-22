@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="shop">
+
+    <groups>
+        <run>
+            <include name="shop"/>
+            <exclude name="parser"/>
+        </run>
+    </groups>
+
+    <test name="Cart Test">
+        <parameter name="cartName" value="test"/>
+        <parameter name="realItemName" value="cat food"/>
+        <parameter name="realItemPrice" value="10"/>
+        <parameter name="realItemWeight" value="2"/>
+        <parameter name="virtualItemName" value="app"/>
+        <parameter name="virtualItemPrice" value="5"/>
+        <parameter name="virtualItemSizeOnDisk" value="50"/>
+        <parameter name="tax" value="0.2"/>
+        <groups>
+            <run>
+                <include name="cart"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.CartTest">
+                <methods>
+                    <include name="cartIsCreatedTest()"/>
+                    <include name="testTotalPrice"/>
+                    <include name="testTotalPriceWhenAddingRemovingItem"/>
+                    <include name="testCartName"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Items Test">
+        <groups>
+            <run>
+                <include name="item"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.RealItemTest"/>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.shop.VirtualItemTest"/>
+        </classes>
+    </test>
+
+    <test name="JsonParser Test">
+        <groups>
+            <run>
+                <include name="parser"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.parser.JsonParserTest"/>
+        </classes>
+    </test>
+</suite>

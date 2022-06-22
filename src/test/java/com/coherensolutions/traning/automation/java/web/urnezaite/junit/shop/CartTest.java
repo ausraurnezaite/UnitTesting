@@ -1,16 +1,18 @@
-package com.coherensolutions.traning.automation.java.web.urnezaite.shop;
+package com.coherensolutions.traning.automation.java.web.urnezaite.junit.shop;
 
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.Cart;
+import com.coherensolutions.traning.automation.java.web.urnezaite.shop.RealItem;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class CartTest {
-    public static Cart cart;
-    public static RealItem item;
+    public Cart cart;
+    public RealItem item;
 
-    @BeforeAll
-    static void createCart() {
+    @BeforeEach
+    void createCart() {
         cart = new Cart("test");
 
         item = new RealItem();
@@ -40,5 +42,4 @@ public class CartTest {
     void testCartName() {
         Assertions.assertEquals("test", cart.getCartName());
     }
-
 }

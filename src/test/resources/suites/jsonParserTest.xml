@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="JsonParser">
+    <test name="JsonParser Test">
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.parser.JsonParserTest">
+                <methods>
+                    <include name="checkIfWrittenAndReadDataIsCorrect"/>
+                    <include name="checkIfThrowsNoSuchFileException"/>
+                    <include name="testFileIsCreated"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test enabled="false" name="EOFException">
+        <classes>
+            <class name="com.coherensolutions.traning.automation.java.web.urnezaite.testNG.parser.JsonParserTest">
+                <methods>
+                    <include name="checkThatEOFExceptionIsNotThrown"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

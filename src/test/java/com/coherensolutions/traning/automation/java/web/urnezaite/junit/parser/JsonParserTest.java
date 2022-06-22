@@ -1,5 +1,7 @@
-package com.coherensolutions.traning.automation.java.web.urnezaite.parser;
+package com.coherensolutions.traning.automation.java.web.urnezaite.junit.parser;
 
+import com.coherensolutions.traning.automation.java.web.urnezaite.parser.JsonParser;
+import com.coherensolutions.traning.automation.java.web.urnezaite.parser.NoSuchFileException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -33,7 +35,6 @@ public class JsonParserTest {
     void checkIfWrittenAndReadDataIsCorrect() {
         parser.writeToFile(cart);
         Cart cartFromFile = parser.readFromFile(new File(String.format("src/main/resources/%s.json", cart.getCartName())));
-        Assertions.assertEquals(cart.getCartName(), cartFromFile.getCartName());
         Assertions.assertAll("carts should match",
                 () -> Assertions.assertEquals(cart.getCartName(), cartFromFile.getCartName(), "Names do not match"),
                 () -> Assertions.assertEquals(cart.getTotalPrice(), cartFromFile.getTotalPrice(), "Prices do not match")
@@ -62,7 +63,6 @@ public class JsonParserTest {
         Assertions.assertDoesNotThrow(() -> parser.readFromFile(new File(path)), "Reading failed");
         //file reading isn't stopped after reaching end of file.
     }
-
 
     @Disabled
     @Test
