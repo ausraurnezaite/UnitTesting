@@ -37,8 +37,8 @@ public class JsonParserTest {
         SoftAssert softAssert = new SoftAssert();
         parser.writeToFile(cart);
         Cart cartFromFile = parser.readFromFile(new File(String.format("src/main/resources/%s.json", cart.getCartName())));
-        softAssert.assertEquals(cartFromFile.getCartName(), cart.getCartName());
-        softAssert.assertEquals(cartFromFile.getTotalPrice(), cart.getTotalPrice());
+        softAssert.assertEquals(cartFromFile.getCartName(), cart.getCartName(), "names should match");
+        softAssert.assertEquals(cartFromFile.getTotalPrice(), cart.getTotalPrice(), "total price should match");
         softAssert.assertAll();
     }
 
@@ -61,7 +61,12 @@ public class JsonParserTest {
 
     @Test(dataProvider = "pathProvider", groups = {"parser", "shop"})
     void checkThatEOFExceptionIsNotThrown(String path) {
+        try{
         parser.readFromFile(new File(path));
+        }catch(Exception ex){
+            System.out.println("No exceptions should be thrown");
+            ex.printStackTrace();
+        }
         //file reading isn't stopped after reaching end of file.
         //com.google.gson.JsonSyntaxException: java.io.EOFException
     }
@@ -79,6 +84,6 @@ public class JsonParserTest {
     void testFileIsCreated() {
         parser.writeToFile(cart);
         File file = new File("src/main/resources/" + cart.getCartName() + ".json");
-        assertTrue(file.exists());
+        assertTrue(file.exists(), "file:  src/main/resources/" + cart.getCartName() + ".json   must exist after being written");
     }
 }

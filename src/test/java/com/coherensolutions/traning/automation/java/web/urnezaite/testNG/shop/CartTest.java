@@ -32,7 +32,7 @@ public class CartTest {
 
     @Test(groups = {"cart", "shop"})
     void cartIsCreatedTest() {
-        assertNotNull(cart);
+        assertNotNull(cart, "cart can't be null");
     }
 
     @Parameters("tax")
@@ -41,7 +41,7 @@ public class CartTest {
         cart.addRealItem(realItem);
         cart.addVirtualItem(virtualItem);
         double totalExpectedPrice = realItem.getPrice() + realItem.getPrice() * tax + virtualItem.getPrice() + virtualItem.getPrice() * tax;
-        assertEquals(cart.getTotalPrice(), totalExpectedPrice);
+        assertEquals(cart.getTotalPrice(), totalExpectedPrice, "price should match");
     }
 
     @Test(groups = {"cart", "shop"}, dependsOnMethods = "cartIsCreatedTest")
@@ -54,8 +54,9 @@ public class CartTest {
         //total price is not changed after item is deleted!!
     }
 
+    @Parameters("cartName")
     @Test(groups = {"cart", "shop"}, dependsOnMethods = "cartIsCreatedTest")
-    void testCartName() {
-        assertEquals(cart.getCartName(), "test");
+    void testCartName(@Optional("test") String cartName) {
+        assertEquals(cart.getCartName(), cartName, "cart name should be \"" + cartName + "\" ");
     }
 }

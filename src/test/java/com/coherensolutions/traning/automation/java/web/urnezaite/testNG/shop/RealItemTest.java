@@ -19,9 +19,9 @@ public class RealItemTest {
 
         SoftAssert softAssert = new SoftAssert();
 
-        softAssert.assertEquals(realItem.getName(), name);
-        softAssert.assertEquals(realItem.getPrice(), price);
-        softAssert.assertEquals(realItem.getWeight(), weight);
+        softAssert.assertEquals(realItem.getName(), name, "name should match");
+        softAssert.assertEquals(realItem.getPrice(), price, "price should match");
+        softAssert.assertEquals(realItem.getWeight(), weight, "wight should match");
         softAssert.assertAll();
     }
 

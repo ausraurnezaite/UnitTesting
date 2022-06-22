@@ -15,9 +15,9 @@ public class VirtualItemTest {
         virtualItem.setSizeOnDisk(sizeOnDisk);
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(virtualItem.getName(), name);
-        softAssert.assertEquals(virtualItem.getPrice(), price);
-        softAssert.assertEquals(virtualItem.getSizeOnDisk(), sizeOnDisk);
+        softAssert.assertEquals(virtualItem.getName(), name, "name should match");
+        softAssert.assertEquals(virtualItem.getPrice(), price, "price should match");
+        softAssert.assertEquals(virtualItem.getSizeOnDisk(), sizeOnDisk, "sizeOnDisk should match");
         softAssert.assertAll();
     }
 
