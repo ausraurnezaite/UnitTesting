@@ -51,7 +51,6 @@ public class CartTest {
         cart.deleteRealItem(realItem);
         cart.deleteVirtualItem(virtualItem);
         assertEquals(cart.getTotalPrice(), 0, "totalPrice must be 0");
-        //total price is not changed after item is deleted!!
     }
 
     @Parameters("cartName")

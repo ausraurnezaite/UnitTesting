@@ -61,14 +61,7 @@ public class JsonParserTest {
 
     @Test(dataProvider = "pathProvider", groups = {"parser", "shop"})
     void checkThatEOFExceptionIsNotThrown(String path) {
-        try{
         parser.readFromFile(new File(path));
-        }catch(Exception ex){
-            System.out.println("No exceptions should be thrown");
-            ex.printStackTrace();
-        }
-        //file reading isn't stopped after reaching end of file.
-        //com.google.gson.JsonSyntaxException: java.io.EOFException
     }
 
     @DataProvider
@@ -82,8 +75,9 @@ public class JsonParserTest {
 
     @Test(groups = {"parser", "shop"})
     void testFileIsCreated() {
+        String fileName = String.format("src/main/resources/%s.json", cart.getCartName());
         parser.writeToFile(cart);
-        File file = new File("src/main/resources/" + cart.getCartName() + ".json");
-        assertTrue(file.exists(), "file:  src/main/resources/" + cart.getCartName() + ".json   must exist after being written");
+        File file = new File(fileName);
+        assertTrue(file.exists(), String.format("file: %s must exist after being written", fileName));
     }
 }
